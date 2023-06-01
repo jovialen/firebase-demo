@@ -13,9 +13,6 @@
       text: todo,
     });
     todo = "";
-
-    //firestore.collection("users").doc(`uid`).collection("todos");
-    // $todoCollection.push({ text: todo })
   }
 
   setDoc(userDoc, { name: $user?.displayName });
@@ -34,7 +31,7 @@
   <Doc ref={`users/${$user?.uid}`} let:ref={userRef} let:data={userInfo}>
     <h2>Hi, {userInfo.name}</h2>
 
-    <Collection ref={`${userRef.path}/todos`} let:data={todos}>
+    <Collection ref={`${userRef?.path}/todos`} let:data={todos}>
       {#each todos as todo}
         <p>{todo.text}</p>
       {/each}
@@ -43,11 +40,4 @@
 </section>
 
 <style>
-  div#all {
-    display: flex;
-  }
-
-  div.todo {
-    display: flex;
-  }
 </style>
